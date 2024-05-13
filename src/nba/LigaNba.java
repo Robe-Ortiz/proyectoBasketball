@@ -15,28 +15,25 @@ import posiciones.Posicion;
 
 public class LigaNba {
 		
-	 private static Equipo chicagoBulls95_96 = crearChicagoBulls95_96();
-	 private static Equipo lakers80_81 = crearLakers80_81();
-	 private static Equipo spurs00_01 = crearSpurs00_01();
-	 private static Equipo miamiHeat12_13 = crearMiamiHeat12_13();
+
 	 private static List<Equipo> listaDeEquipos = crearListaEquipos();
 	 
 		private static List<Equipo> crearListaEquipos(){
 	 		listaDeEquipos = new ArrayList<Equipo>();	 		
 	 			 		
-	 		listaDeEquipos.add(chicagoBulls95_96);
-	 		listaDeEquipos.add(lakers80_81);
-	 		listaDeEquipos.add(spurs00_01);
-	 		listaDeEquipos.add(miamiHeat12_13);
+	 		listaDeEquipos.add(crearChicagoBulls95_96());
+	 		listaDeEquipos.add(crearLakers80_81());
+	 		listaDeEquipos.add(crearSpurs00_01());
+	 		listaDeEquipos.add(crearMiamiHeat12_13());
 	 		
 	 		return listaDeEquipos;
 	 	}
 	   
-	    private static Equipo crearChicagoBulls95_96() {
+	     static Equipo crearChicagoBulls95_96() {
 	       
 	        Tecnico tecnico = new Tecnico("Phil", "Jackson", 50);	  
 	        List<Jugador> jugadoresChicagoBulls95_96 = new ArrayList<>();
-	        jugadoresChicagoBulls95_96.add(new Jugador("Michael", "Jordan", Posicion.EX, 33, 23, 198));
+	        jugadoresChicagoBulls95_96.add(new Jugador("Michael", "Jordan", Posicion.ES, 33, 23, 198));
 	        jugadoresChicagoBulls95_96.add(new Jugador("Scottie", "Pippen", Posicion.AL, 30, 33, 203));
 	        jugadoresChicagoBulls95_96.add(new Jugador("Dennis", "Rodman", Posicion.AP, 34, 91, 201));
 	        jugadoresChicagoBulls95_96.add(new Jugador("Ron", "Harper", Posicion.BA, 32, 9, 198));
@@ -52,7 +49,7 @@ public class LigaNba {
 	        jugadoresLakers80_81.add(new Jugador("Magic", "Johnson", Posicion.BA, 21, 32, 206));
 	        jugadoresLakers80_81.add(new Jugador("Kareem", "Abdul-Jabbar", Posicion.PT, 33, 33, 218));
 	        jugadoresLakers80_81.add(new Jugador("James", "Worthy", Posicion.AL, 19, 42, 203));
-	        jugadoresLakers80_81.add(new Jugador("Michael", "Cooper", Posicion.EX, 23, 21, 198));
+	        jugadoresLakers80_81.add(new Jugador("Michael", "Cooper", Posicion.ES, 23, 21, 198));
 	        jugadoresLakers80_81.add(new Jugador("Kurt", "Rambis", Posicion.AP, 22, 31, 203));
 
 	        return new Equipo("Ángeles Lakers 80_81",tecnico, jugadoresLakers80_81);
@@ -66,7 +63,7 @@ public class LigaNba {
 	        jugadoresSpurs00_01.add(new Jugador("David", "Robinson", Posicion.PT, 35, 50, 213));
 	        jugadoresSpurs00_01.add(new Jugador("Manu", "Ginóbili", Posicion.AL, 23, 20, 198));
 	        jugadoresSpurs00_01.add(new Jugador("Tony", "Parker", Posicion.BA, 18, 9, 188));
-	        jugadoresSpurs00_01.add(new Jugador("Bruce", "Bowen", Posicion.EX, 29, 12, 201));
+	        jugadoresSpurs00_01.add(new Jugador("Bruce", "Bowen", Posicion.ES, 29, 12, 201));
 
 	        return new Equipo("San Antonio Spurs 00_01",tecnico, jugadoresSpurs00_01);
 	    }
@@ -76,37 +73,37 @@ public class LigaNba {
 	        Tecnico tecnico = new Tecnico("Erik", "Spoelstra", 42);
 	        List<Jugador> jugadoresMiamiHeat12_13 = new ArrayList<>();
 	        jugadoresMiamiHeat12_13.add(new Jugador("LeBron", "James", Posicion.AL, 28, 6, 203));
-	        jugadoresMiamiHeat12_13.add(new Jugador("Dwyane", "Wade", Posicion.EX, 31, 3, 193));
+	        jugadoresMiamiHeat12_13.add(new Jugador("Dwyane", "Wade", Posicion.ES, 31, 3, 193));
 	        jugadoresMiamiHeat12_13.add(new Jugador("Chris", "Bosh", Posicion.AP, 29, 1, 211));
-	        jugadoresMiamiHeat12_13.add(new Jugador("Ray", "Allen", Posicion.EX, 37, 34, 196));
+	        jugadoresMiamiHeat12_13.add(new Jugador("Ray", "Allen", Posicion.ES, 37, 34, 196));
 	        jugadoresMiamiHeat12_13.add(new Jugador("Mario", "Chalmers", Posicion.BA, 26, 15, 188));
 
 	        return new Equipo("Miami Heat 12_13",tecnico, jugadoresMiamiHeat12_13);
 	    }
 
+	    private static String imprimirNombreEquipos() {
+	    	StringBuilder sb = new StringBuilder();
+	    	listaDeEquipos.forEach(e->sb.append("-").append(e.getNombre()).append("\n"));
+	    	return sb.toString();
+	    }
+	    
 	    public static void informacionBasicaDeLaLiga() {
 	    	System.out.printf("Los equipos que actualmente forman esta liga son:\n"
-	    			+ "-%s\n"
-	    			+ "-%s\n"
-	    			+ "-%s\n"
-	    			+ "-%s\n"
-	    			+ "\n",
-	    			chicagoBulls95_96.getNombre(),lakers80_81.getNombre(),
-	    			miamiHeat12_13.getNombre(),spurs00_01.getNombre());
+	    			+ "%s\n",imprimirNombreEquipos());
 	    }
 
 	    public static void informacionDetalladaDeCadaEquipo() {
 	    	listaDeEquipos.forEach(System.out::println);
 	    }
 	
-	    public static Equipo informacionDetalladaDeUnEquipoPorSuNombre(String nombreEquipo) throws EquipoNoEncontradoException {
+	    public static Equipo obtenerUnEquipoPorSuNombre(String nombreEquipo) throws EquipoNoEncontradoException {
 	    	return listaDeEquipos.stream()
 			    				.filter(e->e.getNombre().equalsIgnoreCase(nombreEquipo))
 			    				.findFirst()
 			    				.orElseThrow(()-> new EquipoNoEncontradoException("El nombre de equipo introducido no coincide con ninguno"));
 	    }
 
-	    public static Optional<Equipo> informacionDetalladaDeUnEquipoPorSuTecnico(String nombreEntrenador, String apellidoEntrenador) throws TecnicoNoEncontradoException{
+	    public static Optional<Equipo> obtenerUnEquipoPorSuTecnico(String nombreEntrenador, String apellidoEntrenador) throws TecnicoNoEncontradoException{
 	    	Optional<Equipo>  optEquipo= listaDeEquipos.stream()
 	    				.filter(e->e.getTecnico().getNombre().equalsIgnoreCase(nombreEntrenador))
 	    				.filter(e->e.getTecnico().getApellido().equalsIgnoreCase(apellidoEntrenador))
@@ -124,14 +121,14 @@ public class LigaNba {
 			.collect(Collectors.toList());
 	    }
 		
-	    public static double mostrarEdadMediaJugadoresDeLaLiga() {
+	    public static double obtenerEdadMediaJugadoresDeLaLiga() {
 	    	return listaDeEquipos.stream()
 						    	.flatMapToDouble(e->e.getListaDeJugadores().stream().mapToDouble(Jugador::getEdad))
 						    	.average()
 						    	.orElse(0); 	
 	    }
 	    
-	    public static double mostrarEdadMediaJugadoresDeUnEquipo(String nombre) {
+	    public static double obtenerEdadMediaJugadoresDeUnEquipo(String nombre) {
 	    	return listaDeEquipos.stream()
 			    				.filter(e->e.getNombre().equalsIgnoreCase(nombre))
 			    				.flatMapToDouble(e->e.getListaDeJugadores().stream().mapToDouble(Jugador::getEdad))
@@ -139,13 +136,13 @@ public class LigaNba {
 			    				.orElse(0);   	
 	    }
 
-	    public static List<Jugador> mostrarJugadoresDeLaLigaPorPosicion(Posicion posicion){
+	    public static List<Jugador> obtenerJugadoresDeLaLigaPorPosicion(Posicion posicion){
 	    	return listaDeEquipos.stream()
 	    				.flatMap(e->e.getListaDeJugadores().stream().filter(j->j.getPosicion()== posicion))
 	    				.collect(Collectors.toList());
 	    }
 	    
-	    public static int sumarPersonasActivasEnLaLiga() {
+	    public static int obtenerPersonasActivasEnLaLiga() {
 	    	int totalPersonas = 0;  		    	
 	    	totalPersonas += listaDeEquipos.stream()
 								    	.map(e->e.getTecnico())

@@ -2,21 +2,23 @@ package main;
 
 import java.util.List;
 
+import equipo.Equipo;
 import excepciones.EquipoNoEncontradoException;
 import excepciones.TecnicoNoEncontradoException;
 import nba.LigaNba;
 import persona.Jugador;
+import persona.Tecnico;
 import posiciones.Posicion;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		//LigaNba.informacionBasicaDeLaLiga();		
+		LigaNba.informacionBasicaDeLaLiga();		
 		//List<Jugador> listaJugadores = LigaNba.obtenerTodosLosJugadores();
 		//listaJugadores.forEach(System.out::println);
 		
-		//System.out.println(LigaNba.mostrarEdadMediaJugadoresDeLaLiga());
+		//System.out.println(LigaNba.obtenerEdadMediaJugadoresDeLaLiga());
 		//LigaNba.informacionDetalladaDeCadaEquipo();
 
 		//LigaNba.informacionBasicaDeLaLiga();
@@ -26,17 +28,18 @@ public class Main {
 		//System.out.println(LigaNba.jugadorDeMenorAltura().get());
 		//System.out.println(LigaNba.jugadorDeMayorAltura().get());
 		
-		LigaNba.imprimirJugadoresOrdenadosPorNombreConElApellidoEnPrimerLugarYEnMayusculas();
+		//LigaNba.imprimirJugadoresOrdenadosPorNombreConElApellidoEnPrimerLugarYEnMayusculas();
 		//LigaNba.imprimirJugadoresPorDorsalOrdenadosPorAlturaDescendente(33);
 		/*		
 		try{
-			System.out.println(LigaNba.informacionDetalladaDeUnEquipoPorSuNombre("Chicago Bulls 95_96"));
+			System.out.println(LigaNba.obtenerUnEquipoPorSuNombre("Chicago Bulls 95_96"));
 		}catch(EquipoNoEncontradoException e) {
 			System.out.println(e.getMessage());
 		}
-		
+		*/
+		/*
 		try {
-			System.out.println(LigaNba.informacionDetalladaDeUnEquipoPorSuTecnico("phil","JackSON").get());
+			System.out.println(LigaNba.obtenerUnEquipoPorSuTecnico("phil","JackSON").get());
 		}catch (TecnicoNoEncontradoException e) {
 			System.out.println(e.getMessage());
 		}
@@ -45,6 +48,9 @@ public class Main {
 		//LigaNba.imprime5JugadoresAleatoriosDeLaLigaOrdenadosPorNombre();
 		//LigaNba.obten10JugadoresAleatoriosConElNombreYApellidoEnMayusculas().forEach(System.out::println);
 		
+		
+		
+
 	}
 	
 	

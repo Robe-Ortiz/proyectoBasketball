@@ -1,7 +1,7 @@
 package posiciones;
 
 public enum Posicion {
-BA("Base"),AL("Alero"),EX("Escolta"),AP("Ala-Pívot"),PT("Pívot");
+BA("Base"),AL("Alero"),ES("Escolta"),AP("Ala-Pívot"),PT("Pívot");
 	
 	private String nombre;
 	
