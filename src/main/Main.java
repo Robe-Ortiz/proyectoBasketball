@@ -1,6 +1,10 @@
 package main;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 import equipo.Equipo;
 import excepciones.EquipoNoEncontradoException;
@@ -14,7 +18,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		LigaNba.informacionBasicaDeLaLiga();		
+		//LigaNba.informacionBasicaDeLaLiga();		
 		//List<Jugador> listaJugadores = LigaNba.obtenerTodosLosJugadores();
 		//listaJugadores.forEach(System.out::println);
 		
@@ -47,8 +51,9 @@ public class Main {
 		
 		//LigaNba.imprime5JugadoresAleatoriosDeLaLigaOrdenadosPorNombre();
 		//LigaNba.obten10JugadoresAleatoriosConElNombreYApellidoEnMayusculas().forEach(System.out::println);
-		
-		
+		//LigaNba.imprimeLasDiferentesAlturasDeJugadoresDeLaLigaPorOrdenAscendente();
+		//LigaNba.imprimeUnMapaDeLaEdadYLosJugadoresDeEsaEdadOrdenadoPorEdad();
+		LigaNba.imprimeUnMapaDeLasPosicionesYLosJugadores();
 		
 
 	}

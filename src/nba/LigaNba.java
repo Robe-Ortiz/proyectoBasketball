@@ -3,7 +3,9 @@ package nba;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import equipo.Equipo;
@@ -15,7 +17,6 @@ import posiciones.Posicion;
 
 public class LigaNba {
 		
-
 	 private static List<Equipo> listaDeEquipos = crearListaEquipos();
 	 
 		private static List<Equipo> crearListaEquipos(){
@@ -34,7 +35,7 @@ public class LigaNba {
 	        Tecnico tecnico = new Tecnico("Phil", "Jackson", 50);	  
 	        List<Jugador> jugadoresChicagoBulls95_96 = new ArrayList<>();
 	        jugadoresChicagoBulls95_96.add(new Jugador("Michael", "Jordan", Posicion.ES, 33, 23, 198));
-	        jugadoresChicagoBulls95_96.add(new Jugador("Scottie", "Pippen", Posicion.AL, 30, 33, 203));
+	        jugadoresChicagoBulls95_96.add(new Jugador("Scottie", "Pippen", Posicion.AL, 31, 33, 203));
 	        jugadoresChicagoBulls95_96.add(new Jugador("Dennis", "Rodman", Posicion.AP, 34, 91, 201));
 	        jugadoresChicagoBulls95_96.add(new Jugador("Ron", "Harper", Posicion.BA, 32, 9, 198));
 	        jugadoresChicagoBulls95_96.add(new Jugador("Luc", "Longley", Posicion.PT, 27, 13, 218));
@@ -108,8 +109,7 @@ public class LigaNba {
 	    				.filter(e->e.getTecnico().getNombre().equalsIgnoreCase(nombreEntrenador))
 	    				.filter(e->e.getTecnico().getApellido().equalsIgnoreCase(apellidoEntrenador))
 	    				.findFirst();
-	    	if(optEquipo.isEmpty()) throw new TecnicoNoEncontradoException("No se ha encontrado ningún técnico con ese nombre en la liga.");
-	    	
+	    	if(optEquipo.isEmpty()) throw new TecnicoNoEncontradoException("No se ha encontrado ningún técnico con ese nombre en la liga.");	    	
 	    	return optEquipo;
 	    }
     
@@ -192,17 +192,42 @@ public class LigaNba {
 
 	    public static void imprime5JugadoresAleatoriosDeLaLigaOrdenadosPorNombre() {
 
-	    	List<Jugador> lista5JugadoresAleatorios = listaDeEquipos.stream()
-												    				.flatMap(e->e.getListaDeJugadores().stream())
-												    				.sorted(Comparator.comparingDouble(j->Math.random()))
-												    				.limit(5)
-												    				.sorted(Comparator.comparing(Jugador::getNombre))
-												    				.collect(Collectors.toList());
-	    	if (lista5JugadoresAleatorios.isEmpty()) {
-				System.out.println("No hay jugadores para mostrar");
-			}else {
-				lista5JugadoresAleatorios.forEach(System.out::println);
-			}
+	    	 listaDeEquipos.stream()
+    				.flatMap(e->e.getListaDeJugadores().stream())
+    				.sorted(Comparator.comparingDouble(j->Math.random()))
+    				.limit(5)
+    				.sorted(Comparator.comparing(Jugador::getNombre))
+    				.collect(Collectors.toList()).forEach(System.out::println);;
 	    }
 
+	    public static void imprimeLasDiferentesAlturasDeJugadoresDeLaLigaPorOrdenAscendente() {	    	
+	    	listaDeEquipos.stream()
+	    				.flatMap(e -> e.getListaDeJugadores().stream())
+	    				.map(Jugador::getAlturaEnCm)
+	    				.distinct()
+	    				.sorted()
+	    				.forEach(altura -> System.out.println(altura + "cm"));;	    	
+	    }
+	    
+	    
+	    public static void imprimeUnMapaDeLaEdadYLosJugadoresDeEsaEdadOrdenadoPorEdad() {
+	    	listaDeEquipos.stream()
+	    				.flatMap(e ->e.getListaDeJugadores().stream())
+	    				.sorted(Comparator.comparing(Jugador::getEdad))
+	    				.collect(Collectors.groupingBy(Jugador::getEdad)).forEach((k,v) -> {
+	    		    		System.out.println("Edad: " + k);
+	    		    		v.forEach(j -> System.out.println(j.getNombre() + " " + j.getApellido()));	  
+	    				});
+	    }
+	    
+	    public static void imprimeUnMapaDeLasPosicionesYLosJugadores() {
+	    			listaDeEquipos.stream()
+	    			.flatMap(e -> e.getListaDeJugadores().stream())
+	    			.collect(Collectors.groupingBy(Jugador::getPosicion)).forEach((k,v)->{
+	    				System.out.println("POSICIÓN: " + k.getNombre().toUpperCase());
+	    				v.forEach(j -> System.out.println(j.getNombre() + " " + j.getApellido()));
+	    			} );;
+	    }
+	    
+	    
 }

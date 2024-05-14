@@ -8,5 +8,9 @@ BA("Base"),AL("Alero"),ES("Escolta"),AP("Ala-Pívot"),PT("Pívot");
 	private Posicion(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
 	
 }
