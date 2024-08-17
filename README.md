@@ -33,9 +33,10 @@ En primer lugar, durante el ejercicio no se especifica nada sobre constructores,
   
     ![consola equipo](equipo.png)
 
-  >[IMPORTANTE]    
-  >El nombre del equipo se ha guardado en variable en minúscula, solo se muestra en mayúsuclas en el método **toString()**
-  >Puedes probar a apoyarte en la clase Stringbuilder para poder sacar los jugadores (piensa en la posibilidad de crear un método para obtener los jugadores y usarlo en el toString()).
+  ```diff
+  - ⚠️ IMPORTANTE     
+  + El nombre del equipo se ha guardado en variable en minúscula, solo se muestra en mayúsuclas en el método toString()
+  + Puedes probar a apoyarte en la clase Stringbuilder para poder sacar los jugadores. 
 
 * Definir la clase **LigaNBA** dentro del paquete nba con la siguientes propiedad estáticas:
   
